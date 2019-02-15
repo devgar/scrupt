@@ -2,8 +2,10 @@ window.FRAME = document.getElementById('frame')
 
 document.onkeyup = e => console.log(e.keyCode)
 
-window.NUXT = _ => window.FRAME.src='https://nuxtjs.org'
+window.URL = u => window.FRAME.src=u
 
-window.LOCL = _ => window.FRAME.src='http://localhost:3000'
+window.NUXT = _ => window.URL('https://nuxtjs.org')
+
+window.LOCL = _ => window.URL('http://localhost:3000')
 
 window.RFRS = _ => window.FRAME.contentWindow.location.reload(true)
