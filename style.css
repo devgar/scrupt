@@ -2,7 +2,7 @@ html {
 overflow: auto;
 }
  
-html, body, div, iframe
+html, body, iframe
 {
  margin: 0px;
  padding: 0px;
@@ -17,4 +17,44 @@ iframe
  border: none; 
  overflow-y: auto;
  overflow-x: hidden;
+}
+
+#urlDialog
+{
+    display: block;
+    position: fixed;
+    bottom: -48px;
+    height: 48px;
+    left: 0;
+    right: 0;
+    transition: bottom .25s;
+}
+
+#urlDialog.active
+{
+    bottom: 0;
+    transition: bottom .5s;
+}
+
+#urlDialog #urlBox
+{
+    position: absolute;
+    border: none;
+    outline: none;
+    left:0;
+    right:0;
+    top:0;
+}
+
+#urlBox input
+{
+    border: none;
+    outline: none;
+    padding: 2px;
+    border: 8px solid rgba(0, 0, 0, 0.4);
+    margin: 0;
+    font-size: 150%;
+    background-color: rgba(255,255,255, 0.8);
+    box-sizing: border-box;
+    width:100%;
 }

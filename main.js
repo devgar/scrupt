@@ -1,6 +1,18 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, globalShortcut} = require('electron')
+const {ipcMain} = require('electron')
 
-let mainWindow
+let mainWindow, sender
+
+ipcMain.on('renderer-created', (event, arg) => {
+  sender = event.sender
+})
+
+function ready () {
+  createWindow()
+  globalShortcut.register('CommandOrControl+L', () => {
+    sender.send('CommandOrControl+L')
+  })
+}
 
 function createWindow () {
   let {height, width} = require('electron').screen.getPrimaryDisplay().size
@@ -20,7 +32,7 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', ready)
 
 app.on('window-all-closed', _ => process.platform !== 'darwin' ? app.quit() : null)
 
